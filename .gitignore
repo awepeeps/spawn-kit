@@ -1,3 +1,6 @@
 .gradle/
 build/
 target/
+
+# Lefthook per-machine overrides. Never committed and never used by agents (C7.11).
+lefthook-local.yml
