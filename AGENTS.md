@@ -30,15 +30,21 @@ Config is `src/main/resources/config.yml`; command/permission metadata is `plugi
 
 ## Build and test
 
-Requires JDK 25. Run from the repo root:
+Requires JDK 25; `just install` installs Temurin 25 and the pinned tools via mise.
+Run from the repo root:
 
 ```sh
-bash ./gradlew --no-daemon clean test build
+just install
+just check        # format, workflow lint, one clean test+build
+just test         # tests only
+just reproducible # two clean builds, cmp, and the SHA-256 (main and release PRs)
 ```
 
-Jar: `build/libs/awepeeps-spawn-kit-1.3.3.jar`. CI rebuilds twice and fails on any byte
-difference, then prints the SHA-256. Releases pin the exact merge commit plus jar hash in the
-private deployment repo, never a moving branch. Update `CHANGELOG.md` for user-visible changes.
+Jar: `build/libs/awepeeps-spawn-kit-1.3.3.jar`. `just reproducible` rebuilds twice
+and fails on any byte difference, then prints the SHA-256; it runs on `main` and on
+release pull requests (a PR that changes `CHANGELOG.md`). Releases pin the exact
+merge commit plus jar hash in the private deployment repo, never a moving branch.
+Update `CHANGELOG.md` for user-visible changes.
 
 ## Privacy
 
