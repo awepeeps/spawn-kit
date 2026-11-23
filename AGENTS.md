@@ -50,3 +50,9 @@ Update `CHANGELOG.md` for user-visible changes.
 
 Public repo: never commit host paths, server/world names, coordinates, seeds, instance IDs, logs,
 config dumps, backups, secrets, or personal author data.
+
+## Git hooks
+
+Hooks are installed once per checkout with `just hooks` and run through Lefthook, loading the
+shared jobs from `awepeeps/.github` at the `hooks-v2` tag. Agents never bypass them (C7.11):
+no `LEFTHOOK=0`, no `git commit --no-verify`, and no `lefthook-local.yml`.
